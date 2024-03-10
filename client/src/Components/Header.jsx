@@ -25,7 +25,7 @@ const Header = () => {
         <Button className='w-12 h10  sm:inline'pill color='gray'>
           <FaMoon/>
         </Button>
-        <Link to='/sign-in'>
+        <Link to='/signin'>
           <Button gradientDuoTone='redToOrange' outline >Sign IN</Button>
         </Link>
         <Navbar.Toggle/>

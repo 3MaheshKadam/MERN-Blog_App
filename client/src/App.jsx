@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import Signup from './pages/Signup'
 import Projects from './pages/Projects'
 import Header from './Components/Header'
+import Footer from './Components/Footer'
 const App = () => {
   return (
    <BrowserRouter>
@@ -21,6 +22,7 @@ const App = () => {
 
 
    </Routes>
+   <Footer/>
    </BrowserRouter>
   )
 }

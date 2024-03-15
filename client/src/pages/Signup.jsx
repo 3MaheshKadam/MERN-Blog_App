@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, Label, Button } from 'flowbite-react';
 import { Link , useNavigate } from 'react-router-dom';
+import OAuth from '../Components/OAuth';
 
 const Signup = () => {
   const [formData, setFormData] = useState({});
@@ -70,6 +71,7 @@ const navigate =useNavigate();
             <Button className='bg-gradient-to-r from-red-500 to-yellow-300' type='submit'>
               Sign-UP
             </Button>
+            <OAuth/>
           </form>
           <div className="flex gap-2 text-sm mt-3">
             <span className='text-gray-500'>Have an Account ?</span>

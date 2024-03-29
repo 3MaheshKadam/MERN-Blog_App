@@ -71,7 +71,7 @@ try{
   if(user){
 const token =jwt.sign({id:user._id},process.env.JWT_SECRET);
 const {password, ...rest} = user._doc;
-res.status(200).cookie("access_token",token,{
+res.status(200).cookie("access_token" ,token,{
   httpOnly:true,
 }).json(rest);
 

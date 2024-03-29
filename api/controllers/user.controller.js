@@ -30,20 +30,22 @@ if(req.body.username){
   {
     return next(errorHandler(400,"user  namae cant contan blank spaces"));
   }
- try{
-  const updateUser = await User.findByIdAndUpdate(req.params.userId ,{
-    $set:{
-      username :req.body.username,
-      email :req.body.email,
-      //same for profilePicture if in case you addeed that functionality
-      password:req.body.password,
+}
+try {
+  const updatedUser = await User.findByIdAndUpdate(
+    req.params.userId,
+    {
+      $set: {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
     }, 
-  }, {new:true});
-  const {password, ...rest} =updateUser._doc;
-  res.status(200).json(rest);
- }
- catch(error){
-  next(error);
- }
+  },
+  { new: true }
+);
+const { password, ...rest } = updatedUser._doc;
+res.status(200).json(rest);
+} catch (error) {
+next(error);
 }
-}
+};

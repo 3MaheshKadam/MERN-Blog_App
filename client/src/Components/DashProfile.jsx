@@ -12,11 +12,11 @@ import {
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-
+import {Link} from 'react-router-dom';
 
 
 const DashProfile = () => {
-  const {currentUser ,error}= useSelector((state)=> state.user);
+  const {currentUser ,error ,loading}= useSelector((state)=> state.user);
   const [updateUserSuccess , setUpdateUserSuccess]= useState(null);
   const [updateUserError , setUpdateUserError] = useState(null);
   const [formData , setFormData] =useState({});
@@ -146,9 +146,21 @@ const DashProfile = () => {
          />
         <Button 
         type='submit'
-         gradientDuoTone='pinkToOrange' outline>
-            Update
+         gradientDuoTone='pinkToOrange' outline
+         disabled={loading}
+         >
+            {loading ? 'Loading..' : 'Update'}
         </Button>
+        
+        {currentUser.isAdmin &&(
+          <Link to={'/create-post'}>
+            <Button type='button'
+            gradientDuoTone='pinkToOrange'
+            className='w-full'>
+              Create a post
+            </Button>
+          </Link>
+        )}
       </form>
       <div className="text-red-500 flex justify-between mt-5">
         

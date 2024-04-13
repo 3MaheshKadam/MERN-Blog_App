@@ -1,3 +1,4 @@
+
 import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -18,8 +19,8 @@ export default function CreatePost() {
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
-
   const [publishError, setPublishError] = useState(null);
+
   const navigate = useNavigate();
 
   const handleUpdloadImage = async () => {
@@ -58,7 +59,6 @@ export default function CreatePost() {
       console.log(error);
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -74,6 +74,7 @@ export default function CreatePost() {
         setPublishError(data.message);
         return;
       }
+
       if (res.ok) {
         setPublishError(null);
         navigate(`/post/${data.slug}`);
@@ -82,10 +83,9 @@ export default function CreatePost() {
       setPublishError('Something went wrong');
     }
   };
-
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-      <h1 className='text-center text-3xl my-7 font-semibold' >Create a post</h1>
+      <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-4 sm:flex-row justify-between'>
           <TextInput
@@ -94,18 +94,19 @@ export default function CreatePost() {
             required
             id='title'
             className='flex-1'
-            onChange={ (e) =>
+            onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
           />
-          <Select>
+          <Select
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
+          >
             <option value='uncategorized'>Select a category</option>
             <option value='javascript'>JavaScript</option>
             <option value='reactjs'>React.js</option>
             <option value='nextjs'>Next.js</option>
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
           </Select>
         </div>
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
@@ -141,8 +142,7 @@ export default function CreatePost() {
             alt='upload'
             className='w-full h-72 object-cover'
           />
-        )
-        }
+        )}
         <ReactQuill
           theme='snow'
           placeholder='Write something...'

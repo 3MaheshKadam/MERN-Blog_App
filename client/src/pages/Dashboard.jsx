@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import DashSidebar from '../Components/DashSidebar';
-import DashProfile from '../Components/DashProfile';
-import DashPosts from '../Components/DashPosts';
-
+import DashSidebar from '../Components/DashSidebar.jsx';
+import DashPosts from '../Components/DashPosts.jsx';
+import DashProfile from '../Components/DashProfile.jsx'
 export default function Dashboard() {
   const location = useLocation();
   const [tab, setTab] = useState('');
@@ -15,15 +14,15 @@ export default function Dashboard() {
     }
   }, [location.search]);
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className='min-h-screen flex flex-col md:flex-row'>
       <div className='md:w-56'>
         {/* Sidebar */}
         <DashSidebar />
       </div>
       {/* profile... */}
       {tab === 'profile' && <DashProfile />}
-       {/* posts... */}
-       {tab === 'posts' && <DashPosts />}
+      {/* posts... */}
+      {tab === 'posts' && <DashPosts />}
     </div>
   );
 }

@@ -1,9 +1,5 @@
-import React from 'react'
-
-const DashPosts = () => {
+export default function DashPosts() {
   return (
-    <div>DashPost</div>
+    <div>DashPosts</div>
   )
 }
-
-export default DashPosts

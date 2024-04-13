@@ -81,7 +81,6 @@ export default function DashPosts() {
             ))}
           </Table>
         </>
-// work to be done delete la delete cha call edit la edit post cha call
       ) : (
         <p>You have no posts yet!</p>
       )}

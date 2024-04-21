@@ -1,6 +1,7 @@
 import React from 'react'
+import { Button, Spinner } from 'flowbite-react';
 import { useEffect ,useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams} from 'react-router-dom'
 
 // Syncing with URL Parameters: React Router updates the postSlug parameter in the URL when navigating between different posts.
 //  By including postSlug in the dependency array, the effect will re-run whenever the URL changes, 
@@ -37,10 +38,27 @@ const PostPage = () => {
         } 
         fetchPost();//it will initialize the requst
     },[postSlug]); //update with chnge in slug(by clicking on other post)
-    if(loading)return <div>Loading...</div>;
-  return (
-    <p>PostPage</p>
-  )
-}
+    
 
+    if (loading)
+    return (
+      <div className='flex justify-center items-center min-h-screen'>
+        <Spinner size='xl' />
+      </div>
+    );
+  return <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen'>
+    <h1 className='text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl'>{post && post.title}</h1>
+    <Link to={`/search?category=${post && post.category}`} className='self-center mt-5'>
+    <Button color='gray' pill size='xs'>{post && post.category}</Button>
+    </Link>
+    <img src={post && post.image} alt={post && post.title} className='mt-10 p-3 max-h-[600px] w-full object-cover'/>
+    <div className="flex justify-between p-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs">
+        <span>{post && new Date(post.createdAt).toLocaleDateString()}</span>
+        <span className='italic'>{post && (post.content.length /1000).toFixed(0)} mins read</span>
+    </div>
+    <div className='p-3 max-w-2xl mx-auto w-full post-content' dangerouslySetInnerHTML={{__html: post && post.content}}>
+
+    </div>
+  </main>;
+}
 export default PostPage

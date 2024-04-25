@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Spinner } from 'flowbite-react';
 import { useEffect ,useState} from 'react';
 import { Link, useParams} from 'react-router-dom';
-import CommentSection from './CommentSection';
+import CommentSection from '../Components/CommentSection.jsx';
 
 // Syncing with URL Parameters: React Router updates the postSlug parameter in the URL when navigating between different posts.
 //  By including postSlug in the dependency array, the effect will re-run whenever the URL changes, 

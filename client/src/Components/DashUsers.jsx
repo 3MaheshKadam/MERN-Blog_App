@@ -13,6 +13,12 @@ export default function DashUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        // first it will try to fetch all the user present on the  system with thee limit of 9 
+        // if it is ok then data.users will hold the array of the fetched data then if an error 
+        // ocurs then the error handeler will manage the errror and these conditions // will only be executed 
+        //  if the current users id is authourized as an admin of the system in thats from the block of if
+          // http://localhost:5173/api/user/getusers
+
         const res = await fetch(`/api/user/getusers`);
         console.log(res);
         const data = await res.json();
@@ -46,7 +52,6 @@ export default function DashUsers() {
       console.log(error.message);
     }
   };
-
   const handleDeleteUser = async () => {
     try {
         const res = await fetch(`/api/user/delete/${userIdToDelete}`, {

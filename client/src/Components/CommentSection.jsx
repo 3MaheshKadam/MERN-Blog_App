@@ -1,8 +1,7 @@
 import { Alert, Button, TextInput, Textarea } from 'flowbite-react';
-import { set } from 'mongoose';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link ,useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Comment from './Comment';
 
 export default function CommentSection({ postId }) {
@@ -10,9 +9,8 @@ export default function CommentSection({ postId }) {
   const [comment, setComment] = useState('');
   const [commentError, setCommentError] = useState(null);
   const [comments, setComments] = useState([]);
-  console.log(comments);
   const navigate = useNavigate();
-
+  console.log(comments);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (comment.length > 200) {
@@ -55,6 +53,7 @@ export default function CommentSection({ postId }) {
     };
     getComments();
   }, [postId]);
+
   const handleLike = async (commentId) => {
     try {
       if (!currentUser) {
@@ -82,6 +81,14 @@ export default function CommentSection({ postId }) {
       console.log(error.message);
     }
   };
+
+  const handleEdit = async (comment, editedContent) => {
+    setComments(
+      comments.map((c) =>
+        c._id === comment._id ? { ...c, content: editedContent } : c
+      )
+    );
+  };
   return (
     <div className='max-w-2xl mx-auto w-full p-3'>
       {currentUser ? (
@@ -100,9 +107,9 @@ export default function CommentSection({ postId }) {
           </Link>
         </div>
       ) : (
-        <div className='text-sm text-teal-500 my-5 flex gap-1'>
+        <div className='text-sm text-red-500 my-5 flex gap-1'>
           You must be signed in to comment.
-          <Link className='text-blue-500 hover:underline' to={'/sign-in'}>
+          <Link className='text-red-500 hover:underline' to={'/sign-in'}>
             Sign In
           </Link>
         </div>
@@ -110,7 +117,7 @@ export default function CommentSection({ postId }) {
       {currentUser && (
         <form
           onSubmit={handleSubmit}
-          className='border border-teal-500 rounded-md p-3'
+          className='border border-red-500 rounded-md p-3'
         >
           <Textarea
             placeholder='Add a comment...'
@@ -123,7 +130,7 @@ export default function CommentSection({ postId }) {
             <p className='text-gray-500 text-xs'>
               {200 - comment.length} characters remaining
             </p>
-            <Button outline gradientDuoTone='purpleToBlue' type='submit'>
+            <Button outline gradientDuoTone='pinkToOrange' type='submit'>
               Submit
             </Button>
           </div>
@@ -145,7 +152,7 @@ export default function CommentSection({ postId }) {
             </div>
           </div>
           {comments.map((comment) => (
-            <Comment key={comment._id} comment={comment} onLike={handleLike} />
+            <Comment key={comment._id} comment={comment} onLike={handleLike} onEdit={handleEdit}/>
           ))}
         </>
       )}

@@ -14,6 +14,7 @@ import CreatePost from './pages/CreatePost.jsx';
 import UpdatePost from './pages/UpdatePost.jsx';
 import PostPage from './pages/PostPage.jsx'
 import ScrollToTop from './Components/ScrollToTop.jsx'
+import Search from './pages/Search.jsx'
 const App = () => {
   return (
    <BrowserRouter>
@@ -34,6 +35,7 @@ const App = () => {
 
     <Route path='/signin' element={<Signin/>}/>
     <Route path='/signup' element={<Signup/>}/>
+    <Route path='/search' element={<Search/>}/>
     <Route path='/projects' element={<Projects/>}/>
 
     <Route path='/post/:postSlug' element={<PostPage/>}/>

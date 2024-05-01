@@ -29,3 +29,4 @@ const About = () => {
 }
 
 export default About
+//about section is completed now i guess project section must be dont umm after making my e-commarce fullstack

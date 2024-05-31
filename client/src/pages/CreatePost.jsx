@@ -62,7 +62,7 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/post/create', {
+      const res = await fetch('https://mern-blog-app-yxwl.onrender.com/api/post/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

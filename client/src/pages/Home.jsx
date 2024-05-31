@@ -9,7 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch('/api/post/getPosts');
+      const res = await fetch('https://mern-blog-app-yxwl.onrender.com/api/post/getPosts');
       const data = await res.json();
       setPosts(data.posts);
     };
@@ -27,11 +27,11 @@ const Home = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-600 inline-block">I'm a</span> <br />
             <TypeAnimation
               sequence={[
-                "Frontend Dev",
+                "Frontend Developer",
                 1000,
-                "Webdesigner",
+                "Backend Developer",
                 1000,
-                "Consultant"
+                "Aspiring cloud engineer"
               ]}
               wrapper='span'
               speed={200}
@@ -58,9 +58,8 @@ const Home = () => {
       <div>
         <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
           <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
-          <p className='text-gray-500 text-xs sm:text-sm'>
-            Here you'll find a variety of articles and tutorials on topics such as
-            web development, software engineering, and programming languages.
+          <p className='text-gray-200 text-xs sm:text-sm'>
+          Discover an array of articles and tutorials covering diverse topics like web development, software engineering, and programming languages right here.
           </p>
           <Link
             to='/search'

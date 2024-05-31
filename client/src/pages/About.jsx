@@ -8,7 +8,7 @@ const About = () => {
         <h1 className='text-3xl font font-semibold text-center my-7'>
           About Kadam's Blog
         </h1>
-        <div className='text-md text-gray-500 flex flex-col gap-6'>
+        <div className='text-md text-gray-200 flex flex-col gap-6'>
           <p>
           Welcome to Mahesh Shrikrishna kadam's Blog! This blog is my personal project, where I share my thoughts, ideas, and experiences with you. I'm a passionate developer with a keen interest in technology, coding, and exploring the vast world of software engineering
           </p>

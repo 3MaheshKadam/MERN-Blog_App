@@ -19,7 +19,7 @@ export default function DashUsers() {
         //  if the current users id is authourized as an admin of the system in thats from the block of if
           // http://localhost:5173/api/user/getusers
 
-        const res = await fetch(`/api/user/getusers`);
+        const res = await fetch(`https://mern-blog-app-yxwl.onrender.com/api/user/getusers`);
         console.log(res);
         const data = await res.json();
         if (res.ok) {
@@ -40,7 +40,7 @@ export default function DashUsers() {
   const handleShowMore = async () => {
     const startIndex = users.length;
     try {
-      const res = await fetch(`/api/user/getusers?startIndex=${startIndex}`);
+      const res = await fetch(`https://mern-blog-app-yxwl.onrender.com/api/user/getusers?startIndex=${startIndex}`);
       const data = await res.json();
       if (res.ok) {
         setUsers((prev) => [...prev, ...data.users]);
@@ -54,7 +54,7 @@ export default function DashUsers() {
   };
   const handleDeleteUser = async () => {
     try {
-        const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+        const res = await fetch(`https://mern-blog-app-yxwl.onrender.com/api/user/delete/${userIdToDelete}`, {
             method: 'DELETE',
         });
         const data = await res.json();

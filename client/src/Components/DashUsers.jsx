@@ -19,8 +19,8 @@ export default function DashUsers() {
         //  if the current users id is authourized as an admin of the system in thats from the block of if
           // http://localhost:5173/api/user/getusers
 
-        const res = await fetch(`/api/user/getusers`);
-        console.log(res);
+          const res = await fetch(`/api/user/getusers`);
+          console.log(res);
         const data = await res.json();
         if (res.ok) {
           setUsers(data.users);

@@ -23,7 +23,7 @@ export default function DashboardComp() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch('/api/user/getusers');
+        const res = await fetch('/api/post/getposts?limit=5');
         const data = await res.json();
         if (res.ok) {
           setUsers(data.users);

@@ -26,11 +26,10 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
 
-app.use('https://mern-blog-app-yxwl.onrender.com/api/user', userRoutes);
-app.use('https://mern-blog-app-yxwl.onrender.com/api/auth', authRoutes);
-app.use('https://mern-blog-app-yxwl.onrender.com/api/post',postRouters);
-app.use('https://mern-blog-app-yxwl.onrender.com/api/comment', commentRoutes);
-
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/post',postRouters);
+app.use('/api/comment', commentRoutes);
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal Server Error';
